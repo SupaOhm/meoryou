@@ -20,8 +20,8 @@ const FinalScreen = ({ results = [], players = {} }) => {
                     ❤️
                 </motion.div>
 
-                <h1 style={styles.title}>21 Months Together!</h1>
-                <p style={styles.subtitle}>and I still choose you every day.</p>
+                <h1 style={styles.title}>21 Months Laew Na Jub!</h1>
+                <p style={styles.subtitle}>and I still choose you every day na kub</p>
 
                 <div style={styles.summaryContainer}>
                     <h2 style={styles.summaryTitle}>How we answered:</h2>

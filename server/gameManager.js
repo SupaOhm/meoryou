@@ -1,3 +1,5 @@
+const { text } = require("express");
+
 class GameManager {
     constructor(io) {
         this.io = io;
@@ -6,15 +8,21 @@ class GameManager {
         this.roundStage = 'PREVIEW'; // PREVIEW, ACTIVE, COMPLETE
         this.questions = [
             { text: "This is tutorial", options: ["Ohm", "Sand"] },
-            /*{ text: "ใครตื่นสายกว่ากัน?", options: ["Ohm", "Sand"] },
+            { text: "ใครตื่นสายกว่ากัน?", options: ["Ohm", "Sand"] },
             { text: "ใครกินเยอะกว่า?", options: ["Ohm", "Sand"] },
+            { text: "ใครขี้เกียจกว่า?", options: ["Ohm", "Sand"] },
+            { text: "ใครง้อเก่งกว่า?", options: ["Ohm", "Sand"] },
+            { text: "ใครขี้อ้อนกว่า?", options: ["Ohm", "Sand"] },
+            { text: "ใครขี้หวงกว่า?", options: ["Ohm", "Sand"] },
             { text: "ใครชอบบอกว่าไม่เป็นไรแต่จริงๆเป็น?", options: ["Ohm", "Sand"] },
-            { text: "ใครชอบซื้อของไร้สาระมากกว่า?", options: ["Ohm", "Sand"] },
+            { text: "ใครชอบช้อปปิ้งมากกว่า?", options: ["Ohm", "Sand"] },
             { text: "ใครน่ารักกว่ากัน?", options: ["Ohm", "Sand"] },
+            { text: "ใครขี้ลืมกว่า?", options: ["Ohm", "Sand"] },
             { text: "ใครบ๊องกว่ากัน?", options: ["Ohm", "Sand"] },
             { text: "ใครชอบโกหก?", options: ["Ohm", "Sand"] },
             { text: "ใครตดเหม็นกว่ากัน?", options: ["Ohm", "Sand"] },
             { text: "ใครเป็นคนเริ่มจูบครั้งแรก?", options: ["Ohm", "Sand"] },
+            { text: "ใครขี้งอนกว่า?", options: ["Ohm", "Sand"] },
             { text: "ใครเป็นคนขอเป็นแฟน?", options: ["Ohm", "Sand"] },
             { text: "ใครชอบอีกฝ่ายก่อน?", options: ["Ohm", "Sand"] },
             { text: "ใครชอบอึนาน?", options: ["Ohm", "Sand"] },
@@ -22,7 +30,7 @@ class GameManager {
             { text: "ใครซุ่มซ่ามกว่า?", options: ["Ohm", "Sand"] },
             { text: "ใครติดเตียงกว่ากัน?", options: ["Ohm", "Sand"] },
             { text: "ใครชอบวีนมากกว่า?", options: ["Ohm", "Sand"] },
-            { text: "ใครดื้อที่สุด?", options: ["Ohm", "Sand"] },*/
+            { text: "ใครดื้อที่สุด?", options: ["Ohm", "Sand"] },
         ];
         this.currentQuestionIndex = 0;
         this.answers = {}; // { questionIndex: { socketId: answer } }
