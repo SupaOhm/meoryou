@@ -3,6 +3,6 @@
   "outputDirectory": "client/dist",
   "devCommand": "./start.sh",
   "env": {
-    "VITE_SERVER_URL": "@vite_server_url"
+    "VITE_SERVER_URL": ""
   }
 }
