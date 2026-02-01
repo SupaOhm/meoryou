@@ -105,6 +105,21 @@ const Character = ({ role, name, isMe, confirmed }) => {
 const GameScreen = ({ myId, players, question, roundStage, countdown, index, total, onConfirm }) => {
     const containerRef = useRef(null);
     const [pops, setPops] = useState([]);
+    const [resultPhrase] = useState(() => {
+        const phrases = [
+            "Perfect Match!",
+            "Great Minds!",
+            "You Know Each Other!",
+            "Smart Move!",
+            "Good Answer!",
+            "On The Same Page!",
+            "Soulmates!",
+            "Love This!",
+            "Amazing!",
+            "Well Done!"
+        ];
+        return phrases[Math.floor(Math.random() * phrases.length)];
+    });
     const myData = players[myId];
 
     const handleTap = (e) => {
@@ -208,7 +223,7 @@ const GameScreen = ({ myId, players, question, roundStage, countdown, index, tot
                             style={styles.resultCard}
                         >
                             <div style={styles.resultEmoji}>❤️</div>
-                            <div style={styles.resultText}>Perfect Match!</div>
+                            <div style={styles.resultText}>{resultPhrase}</div>
                         </motion.div>
                     )}
                 </AnimatePresence>
