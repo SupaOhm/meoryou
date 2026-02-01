@@ -4,8 +4,5 @@
   "devCommand": "./start.sh",
   "env": {
     "VITE_SERVER_URL": "@vite_server_url"
-  },
-  "envUrl": {
-    "vite_server_url": "Environment variable - set this to your backend URL (e.g., https://your-api.render.com)"
   }
 }
