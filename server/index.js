@@ -20,6 +20,11 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
+// Health check endpoint for monitoring
+app.get('/', (req, res) => {
+  res.status(200).json({ status: 'ok', message: 'Server is running' });
+});
+
 // Initialize Game Manager
 const gameManager = new GameManager(io);
 
