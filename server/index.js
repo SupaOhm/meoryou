@@ -3,6 +3,7 @@ const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const { GameManager } = require('./gameManager');
 
 const app = express();
@@ -44,12 +45,18 @@ io.on('connection', (socket) => {
   });
 });
 
-// Serve static files in production
+// Serve static files in production (only if built client exists)
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-  });
+  const clientDistPath = path.join(__dirname, '../client/dist');
+  const clientIndexPath = path.join(clientDistPath, 'index.html');
+  if (fs.existsSync(clientIndexPath)) {
+    app.use(express.static(clientDistPath));
+    app.get(/.*/, (req, res) => {
+      res.sendFile(clientIndexPath);
+    });
+  } else {
+    console.warn('Client build not found. Skipping static file serving.');
+  }
 }
 
 const PORT = process.env.PORT || 3000;
