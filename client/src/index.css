@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-bg: #FFF0F5; /* Lavender Blush */
+  --color-primary: #FFB6C1; /* Light Pink */
+  --color-secondary: #87CEFA; /* Light Sky Blue */
+  --color-text: #5D5D5D;
+  --color-white: #FFFFFF;
+  --font-main: 'Fredoka', sans-serif;
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  overflow: hidden; /* Prevent scrolling for app-like feel */
+  -webkit-tap-highlight-color: transparent;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-family: var(--font-main);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+
+input {
+  font-family: var(--font-main);
+  outline: none;
+}

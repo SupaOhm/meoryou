@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd client && npm run build",
+  "outputDirectory": "client/dist",
+  "devCommand": "./start.sh",
+  "env": [
+    {
+      "key": "VITE_SERVER_URL",
+      "value": "YOUR_BACKEND_URL_HERE"
+    }
+  ]
+}
