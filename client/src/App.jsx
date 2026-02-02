@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { socket } from './socket';
+import PasswordScreen from './components/PasswordScreen';
 import JoinScreen from './components/JoinScreen';
 import WaitingScreen from './components/WaitingScreen';
 import GameScreen from './components/GameScreen';
@@ -8,6 +9,7 @@ import './App.css';
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
+  const [passwordVerified, setPasswordVerified] = useState(false);
   const [gameState, setGameState] = useState('JOINING'); // JOINING, WAITING, PLAYING, FINISHED
   const [allPlayers, setAllPlayers] = useState({});
   const [currentQuestion, setCurrentQuestion] = useState(null);
@@ -152,9 +154,10 @@ function App() {
 
   return (
     <div className="app-container">
-      {gameState === 'JOINING' && <JoinScreen onJoin={handleJoin} isConnected={isConnected} />}
-      {gameState === 'WAITING' && <WaitingScreen players={allPlayers} />}
-      {gameState === 'PLAYING' && (
+      {!passwordVerified && <PasswordScreen onPasswordSubmit={() => setPasswordVerified(true)} isConnected={isConnected} />}
+      {passwordVerified && gameState === 'JOINING' && <JoinScreen onJoin={handleJoin} isConnected={isConnected} />}
+      {passwordVerified && gameState === 'WAITING' && <WaitingScreen players={allPlayers} />}
+      {passwordVerified && gameState === 'PLAYING' && (
         <GameScreen
           myId={socket.id}
           players={allPlayers}
@@ -166,7 +169,7 @@ function App() {
           onConfirm={handleConfirmChoice}
         />
       )}
-      {gameState === 'FINISHED' && <FinalScreen results={gameResults} players={allPlayers} />}
+      {passwordVerified && gameState === 'FINISHED' && <FinalScreen results={gameResults} players={allPlayers} />}
     </div>
   );
 }
